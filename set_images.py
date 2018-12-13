@@ -151,6 +151,7 @@ def process(name, source_dir, pet_list,  label_str='brainmask', ext='mnc' ):
             #DVB label_fn = glob(source_dir + os.sep + '**' + os.sep + name + '*' + t + '*'+label_str+'*.'+ext, recursive=True)
             #label_fn = glob(source_dir + os.sep + '**' + os.sep + name + '*'+label_str+'*.'+ext, recursive=True)
             label_fn = glob(source_dir + os.sep + '**' +  os.sep + '*'+label_str+'*.'+ext, recursive=True)
+            print('label_fn: ',label_fn)
             if not label_fn == []: label_fn = label_fn[0]
             else: 
                 print('Warning: could not find label for ', name, 'with the form:')
