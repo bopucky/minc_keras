@@ -137,8 +137,8 @@ def process(name, source_dir, pet_list,  label_str='brainmask', ext='mnc' ):
     #    return(1)
     pet_names = [sub('.mnc', '', sub('acq-', '', g))
                  for f in pet for g in f.split('_') if 'acq' in g]
-    task_names = [sub('ses-', '', g)
-                  for f in pet for g in f.split('_') if 'ses' in g]
+    task_names = [sub('task-', '', g)
+                  for f in pet for g in f.split('_') if 'task' in g]
 
     label_str = os.path.splitext(label_str)[0]
     if len(task_names) == 0:
@@ -148,10 +148,7 @@ def process(name, source_dir, pet_list,  label_str='brainmask', ext='mnc' ):
     else :
         labels = []
         for p, t in zip(pet, task_names):
-            #DVB label_fn = glob(source_dir + os.sep + '**' + os.sep + name + '*' + t + '*'+label_str+'*.'+ext, recursive=True)
-            #label_fn = glob(source_dir + os.sep + '**' + os.sep + name + '*'+label_str+'*.'+ext, recursive=True)
-            label_fn = glob(source_dir + os.sep + '**' +  os.sep + '*'+label_str+'*.'+ext, recursive=True)
-            print('label_fn: ',label_fn)
+            label_fn = glob(source_dir + os.sep + '**' + os.sep + name + '*' + t + '*'+label_str+'*.'+ext, recursive=True)
             if not label_fn == []: label_fn = label_fn[0]
             else: 
                 print('Warning: could not find label for ', name, 'with the form:')
