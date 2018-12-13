@@ -138,7 +138,7 @@ def process(name, source_dir, pet_list,  label_str='brainmask', ext='mnc' ):
     pet_names = [sub('.mnc', '', sub('acq-', '', g))
                  for f in pet for g in f.split('_') if 'acq' in g]
     task_names = [sub('task-', '', g)
-                  for f in pet for g in f.split('_') if 'task' in g]
+                  for f in pet for g in f.split('_') if 'ses' in g]
 
     label_str = os.path.splitext(label_str)[0]
     if len(task_names) == 0:

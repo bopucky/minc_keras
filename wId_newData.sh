@@ -12,7 +12,7 @@ id=`dirname $ii|rev|cut -d/ -f1|rev|cut -c5-`;
 echo $id;
 mincaverage $ii `echo $ii|cut -d. -f1`_sum.mnc -avgdim time -width_weighted;
 for vv in rot*;do \
-mincresample `echo $ii|cut -d. -f1`_sum.mnc data_new/sub_${id}_task-`echo ${vv}|cut -d. -f1`_`basename $ii|cut -d_ -f2`.mnc -transformation $vv -like `echo $ii|cut -d. -f1`_sum.mnc -nearest_neighbour -clobber;
+mincresample `echo $ii|cut -d. -f1`_sum.mnc data_new/sub_${id}_ses-`echo ${vv}|cut -d. -f1`_`basename $ii|cut -d_ -f2`.mnc -transformation $vv -like `echo $ii|cut -d. -f1`_sum.mnc -nearest_neighbour -clobber;
 done;
 done;
 
@@ -35,6 +35,6 @@ done;
 done;
 
 
-for ii in data/sub-*/*sum.mnc;do id=`dirname $ii|cut -d/ -f2|cut -c5-`;cp $ii data_new/sub_${id}_task-rot0_`basename $ii|cut -d_ -f2`.mnc;done
+for ii in data/sub-*/*sum.mnc;do id=`dirname $ii|cut -d/ -f2|cut -c5-`;cp $ii data_new/sub_${id}_ses-rot0_`basename $ii|cut -d_ -f2`.mnc;done
 for ii in data/sub-*/*labels.mnc;do id=`dirname $ii|cut -d/ -f2|cut -c5-`;cp $ii data_new/sub_${id}_labels-rot0.mnc;done
 for ii in data/sub-*/*labels_brainmask.mnc;do id=`dirname $ii|cut -d/ -f2|cut -c5-`;cp $ii data_new/sub_${id}_labels-rot0_`basename $ii|cut -d_ -f3`;done
